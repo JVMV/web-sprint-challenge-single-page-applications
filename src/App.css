@@ -10,6 +10,9 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    border-radius: 9999px;
+    /* border: solid 4px black; */
+    height: 150px;
   }
 }
 
@@ -36,3 +39,29 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  display: flex;
+  flex-flow: column wrap;
+  border: solid 5px red;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}
+.nav-bar {
+  display: flex;
+  padding: 0;
+  width: 100vw;
+  /* border: solid 2px pink; */
+  justify-content: center;
+  align-items: center;
+}
+.link {
+  padding: 2%;
+  margin: 1%;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: white;
+  background-color: black;
+}
+
