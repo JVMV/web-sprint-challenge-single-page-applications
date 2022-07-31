@@ -19,12 +19,16 @@ const StyledHomepage = styled.div`
         position: relative;
         overflow: hidden;
     }
+    .bnr-txt {
+        text-align: center;
+        font-size: 2.4rem;
+    }
     .bnr-btn {
         text-decoration: none;
         font-size: 1.4rem;
         color: black;
         // border: solid 1px red;
-        padding: 1%;
+        padding: 2%;
         background-color: #fccf59;
         border-radius: 5px;
     }
@@ -35,7 +39,7 @@ const StyledHomepage = styled.div`
     }
     .bnr-img {
         position: absolute;
-        opacity: 0.4;
+        opacity: 0.35;
         background-color: black;
     }
     .bnr-content {
@@ -45,6 +49,11 @@ const StyledHomepage = styled.div`
         align-items: center;
         position: relative;
         height: 100%;
+    }
+    em {
+        color: #bd1d2c;
+        text-decoration: underline;
+        text-decoration-color: black;
     }
 `
 
@@ -58,8 +67,12 @@ export default function() {
                     alt='banner-background-img' 
                 />
                 <div className='bnr-content'>
-                    <h2 className='bnr-txt'>Homepage Banner Title</h2>
-                    <Link className='bnr-btn' to='/'>Pizza?</Link>
+                    <h2 className='bnr-txt'>
+                        All new <br />
+                        <em>Artisan Style</em><br /> 
+                        thin crust
+                    </h2>
+                    <Link className='bnr-btn' to='/'>Order Now</Link>
                 </div>
             </div>
             <div className='grid'>
