@@ -1,10 +1,50 @@
 import React from "react";
 import './App.css';
 import { Link , Switch, Route, useParams} from 'react-router-dom'
+import Styled from 'styled-components'
+import Home from './homepage';
+import Form from './Form';
+
+const StyledApp = Styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  // border: solid 2px red;
+  height: 100vh;
+
+  header {
+    display: flex;
+    flex-flow: column wrap;
+    // border: solid 5px red;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+  }
+  .nav-bar {
+    display: flex;
+    padding: 0;
+    width: 100vw;
+    /* border: solid 2px pink; */
+    justify-content: center;
+    align-items: center;
+  }
+  .link {
+    padding: 2%;
+    margin: 1%;
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: white;
+    background-color: black;
+  }
+  
+  footer {
+    // border: solid 2px purple;
+  }
+`
 
 const App = () => {
   return (
-    <>
+    <StyledApp>
       <header>
       <div>
       <h1>Lambda Eats</h1>
@@ -16,13 +56,16 @@ const App = () => {
       </nav>
       </header>
 
-      <body>
+      <div className="body">
        <Switch>
-        <Route>
-
+        <Route exact path='/'>
+          <Home />
         </Route> 
+        <Route path='/order-pizza'>
+          <Form />
+        </Route>
        </Switch> 
-      </body>
+      </div>
 
       <footer>
       <nav className="nav-bar">
@@ -30,7 +73,7 @@ const App = () => {
         <Link className="link order" to='/order-pizza'>Order</Link>
       </nav>
       </footer>
-    </>
+    </StyledApp>
   );
 };
 export default App;
