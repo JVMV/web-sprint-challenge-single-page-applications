@@ -135,6 +135,15 @@ const StyledHomepage = styled.div`
         text-align: center;
         background-color: rgba(255, 255, 255, 0.8);
     }
+    .p1 {
+        margin: 0 40% 0 0;
+    }
+    .p2 {
+        margin: 0 0 0 20%;
+    }
+    .p3 {
+        margin: 0 0 0 40%;
+    }
 `
 
 export default function() {
@@ -148,10 +157,10 @@ export default function() {
                 />
                 <div className='bnr-content'>
                     <div className='bnr-txt'>
-                        <span className='offset'>THE ALL NEW</span><br />
+                        <span className='p1'>THE ALL NEW</span><br />
                         <span><em>Artisan Style</em></span><br /> 
-                        THIN CRUST<br />
-                        YERRRRRP!
+                        <span className='p2'>THIN CRUST</span><br />
+                        <span className='p3'>YERRRRRP!</span>
                     </div>
                     <Link className='bnr-btn' to='/pizza'>Order Now</Link>
                 </div>

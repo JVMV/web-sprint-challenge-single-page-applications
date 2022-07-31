@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled from'styled-components';
-import Confirmation from './Confirmation';
+import { Link } from 'react-router-dom';
 
 const StyledForm = Styled.div`
 display: flex;
@@ -22,7 +22,19 @@ align-items: center;
         font-size: 1.2rem;
         font-weight: bold;
         background-color: lightGreen;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        border: solid 3px black;
     }
+    .order-btn:hover {
+        transform: scale(1.1);
+        transition: ease-in-out .5s;
+      }
+      .order-btn:not(:hover) {
+        transform: scale(1);
+        transition: ease-in-out .5s;
+      }
     fieldset {
         margin: 2% 0;
     }
@@ -31,12 +43,11 @@ align-items: center;
     }
 `
 
-const submit = (e) => {
-    e.preventDefault();
-    <Confirmation />
-}
 
-export default function() {
+export default function(props) {
+
+    const {submit} = props;
+
     return (
         <StyledForm>
             <h2>Your Order</h2>
@@ -160,7 +171,9 @@ export default function() {
                         <input id='special-text' name='special-text' />
                     </fieldset>
                 </fieldset>
-                <button id='order-button' className='order-btn' onClick={submit}>Submit Order</button>
+                <Link to='/confirmation' id='order-button' className='order-btn' onClick={true ? null : {submit}}>
+                    Submit Order
+                </Link>
             </form>
         </StyledForm>
     )

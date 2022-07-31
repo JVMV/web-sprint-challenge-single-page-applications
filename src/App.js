@@ -59,7 +59,6 @@ const App = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    <Link to=''/>
   }
 
   return (
@@ -83,7 +82,7 @@ const App = () => {
         <Route path='/pizza'>
           <Form submit={submit}/>
         </Route>
-        <Route path=''>
+        <Route path='/confirmation'>
           <Confirmation />
         </Route>
        </Switch> 
