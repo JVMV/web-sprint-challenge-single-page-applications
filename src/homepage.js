@@ -65,10 +65,15 @@ const StyledHomepage = styled.div`
         align-items: center;
     }
     .grid-itm {
-        border: solid 1px red;
+        // border: solid 1px red;
         margin: 1%;
         width: 30%;
         height: 40%;
+        font-weight: bold;
+        // color: white;
+    }
+    .grid-itm {
+        // border: solid 1px black;
     }
 
     .bnr-img {
@@ -93,8 +98,41 @@ const StyledHomepage = styled.div`
         text-decoration-color: black;
         font-size: 2.4rem;
     }
-    .offset {
-        
+    .yerp {
+        background-image: url('https://cdn.pastemagazine.com/www/articles/2019/02/22/DESUSMERO101-GregEndriesShowtime-Header.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    .pizza {
+        background-image: url('https://www.eatthis.com/wp-content/uploads/sites/4/2019/12/sbarro-pepperoni-pizza.jpg?quality=82&strip=1');
+        background-position: center;
+        background-size: cover;
+    }
+    .breadsticks {
+        background-image: url('https://celebratingsweets.com/wp-content/uploads/2014/03/cheesy-garlic-heb-breadsticks-Celebrating-Sweets.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    .pasta {
+        background-image: url('https://pinchandswirl.com/wp-content/uploads/2020/04/Lemon-Garlic-Pasta-sq.jpg');
+        // background-position: center;
+        background-size: cover;
+    }
+    .salad {
+        background-image: url('https://food.fnr.sndimg.com/content/dam/images/food/fullset/2021/05/05/WU2710_So-Good-For-You-Salad_s4x3.jpg.rend.hgtvcom.616.462.suffix/1620241851446.jpeg');
+        background-position: center;
+        background-size: cover;
+    }
+    .drinks {
+        background-image: url('https://la-mesa.com/wp-content/uploads/2016/10/la-mesa-mexican-restaurant-margarita-with-chips.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    .txt-ovrly {
+        // border: solid 1px red;
+        width: 50%;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
     }
 `
 
@@ -120,12 +158,24 @@ export default function() {
             <div className='grid-container'>
                 <h2>What'cha cravin'?</h2>
                 <div className='grid-menu'>
-                    <div className='grid-itm'>Artisan Pizza</div>
-                    <div className='grid-itm'>Breadsticks</div>
-                    <div className='grid-itm'>Pasta</div>
-                    <div className='grid-itm'>Salad</div>
-                    <div className='grid-itm'>Drinks</div>
-                    <div className='grid-itm'>Yerrrp</div>
+                    <div className='grid-itm pizza'>
+                        <p className='txt-ovrly'>Artisan Pizza</p>
+                    </div>
+                    <div className='grid-itm breadsticks'>
+                        <p className='txt-ovrly'>Breadsticks</p>
+                    </div>
+                    <div className='grid-itm pasta'>
+                        <p className='txt-ovrly'>Pasta</p>
+                    </div>
+                    <div className='grid-itm salad'>
+                        <p className='txt-ovrly'>Salad</p>
+                    </div>
+                    <div className='grid-itm drinks'>
+                        <p className='txt-ovrly'>Drinks</p>
+                    </div>
+                    <div className='grid-itm yerp'>
+                        <p className='txt-ovrly'>Yerrrp</p>
+                    </div>
                 </div>
             </div>   
         </StyledHomepage>
