@@ -33,8 +33,9 @@ const StyledApp = Styled.div`
     margin: 1%;
     text-decoration: none;
     font-size: 1.4rem;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: #fccf59;
+    border-radius: 5px;
   }
   
   footer {
