@@ -8,9 +8,11 @@ import Form from './Form';
 const StyledApp = Styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
-  // border: solid 2px red;
+  justify-content: center;
+  // border: solid 5px red;
   height: 100vh;
+  margin: 0;
+  // width: 100vw;
 
   header {
     display: flex;
@@ -23,7 +25,7 @@ const StyledApp = Styled.div`
   .nav-bar {
     display: flex;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     /* border: solid 2px pink; */
     justify-content: center;
     align-items: center;
@@ -56,7 +58,7 @@ const App = () => {
     <StyledApp>
       <header>
       <div>
-      <h1>Lambda Eats</h1>
+      <h1>J's Pizza Kitchen</h1>
       </div>
       <nav className="nav-bar">
         <Link className="link home" to='/'>Home</Link>
