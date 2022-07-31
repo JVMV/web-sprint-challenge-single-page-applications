@@ -4,6 +4,7 @@ import { Link , Switch, Route, useParams} from 'react-router-dom'
 import Styled from 'styled-components'
 import Home from './homepage';
 import Form from './Form';
+import Confirmation from './Confirmation';
 
 const StyledApp = Styled.div`
   display: flex;
@@ -55,6 +56,12 @@ const StyledApp = Styled.div`
 `
 
 const App = () => {
+
+  const submit = (e) => {
+    e.preventDefault();
+    <Link to=''/>
+  }
+
   return (
     <StyledApp>
       <header>
@@ -62,9 +69,9 @@ const App = () => {
       <h1>J's Pizza Kitchen</h1>
       </div>
       <nav className="nav-bar">
-        <Link className="link home" to='/'>Home</Link>
+        <Link  id="home" className="link home" to='/'>Home</Link>
         <img className="App-logo" src="https://flyclipart.com/thumb2/september-free-clipart-download-156740.png" alt='pizza-clip-art' />
-        <Link className="link order" to='/order-pizza'>Order</Link>
+        <Link id="order-pizza" className="link order" to='/pizza'>Order</Link>
       </nav>
       </header>
 
@@ -73,8 +80,11 @@ const App = () => {
         <Route exact path='/'>
           <Home />
         </Route> 
-        <Route path='/order-pizza'>
-          <Form />
+        <Route path='/pizza'>
+          <Form submit={submit}/>
+        </Route>
+        <Route path=''>
+          <Confirmation />
         </Route>
        </Switch> 
       </div>

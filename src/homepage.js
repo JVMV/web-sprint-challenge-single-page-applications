@@ -153,7 +153,7 @@ export default function() {
                         THIN CRUST<br />
                         YERRRRRP!
                     </div>
-                    <Link className='bnr-btn' to='/order-pizza'>Order Now</Link>
+                    <Link className='bnr-btn' to='/pizza'>Order Now</Link>
                 </div>
             </div>
             <div className='grid-container'>
