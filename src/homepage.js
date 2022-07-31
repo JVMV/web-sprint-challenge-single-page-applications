@@ -21,7 +21,8 @@ const StyledHomepage = styled.div`
     }
     .bnr-txt {
         text-align: center;
-        font-size: 2.4rem;
+        font-size: 1.8rem;
+        line-height: 1.5;
     }
     .bnr-btn {
         text-decoration: none;
@@ -32,6 +33,14 @@ const StyledHomepage = styled.div`
         background-color: #fccf59;
         border-radius: 5px;
     }
+    .bnr-btn:hover {
+        transform: scale(1.2);
+        transition: ease-in-out .5s;
+      }
+      .bnr-btn:not(:hover) {
+        transform: scale(1);
+        transition: ease-in-out .5s;
+      }
     .grid {
         border: solid 1px orange;
         width: 100%;
@@ -54,6 +63,7 @@ const StyledHomepage = styled.div`
         color: #bd1d2c;
         text-decoration: underline;
         text-decoration-color: black;
+        font-size: 2.4rem;
     }
 `
 
@@ -72,7 +82,7 @@ export default function() {
                         <em>Artisan Style</em><br /> 
                         thin crust
                     </h2>
-                    <Link className='bnr-btn' to='/'>Order Now</Link>
+                    <Link className='bnr-btn' to='/order-pizza'>Order Now</Link>
                 </div>
             </div>
             <div className='grid'>

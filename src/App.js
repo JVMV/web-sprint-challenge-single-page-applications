@@ -37,6 +37,14 @@ const StyledApp = Styled.div`
     background-color: #fccf59;
     border-radius: 5px;
   }
+  .link:hover {
+    transform: scale(1.2);
+    transition: ease-in-out .5s;
+  }
+  .link:not(:hover) {
+    transform: scale(1);
+    transition: ease-in-out .5s;
+  }
   
   footer {
     // border: solid 2px purple;
