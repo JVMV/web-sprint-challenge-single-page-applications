@@ -26,6 +26,7 @@ const StyledHomepage = styled.div`
         text-align: center;
         font-size: 1.4rem;
         line-height: 1.8;
+        font-weight: bold;
         // border: solid 2px purple;
         width: 100%
     }

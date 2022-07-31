@@ -9,9 +9,9 @@ const StyledApp = Styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  // border: solid 5px red;
+  // border: solid 1px red;
   height: 100vh;
-  margin: 0;
+  margin: 1%;
   // width: 100vw;
 
   header {
@@ -50,6 +50,7 @@ const StyledApp = Styled.div`
   
   footer {
     // border: solid 2px purple;
+    font-size: 12px;
   }
 `
 
@@ -79,10 +80,11 @@ const App = () => {
       </div>
 
       <footer>
-      <nav className="nav-bar">
+      {/* <nav className="nav-bar">
         <Link className="link home" to='/'>Home</Link>
         <Link className="link order" to='/order-pizza'>Order</Link>
-      </nav>
+      </nav> */}
+      <p>Copyright © 2022 JsPizzaKitchen, LLC. All Rights Reserved</p>
       </footer>
     </StyledApp>
   );
