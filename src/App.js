@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css';
 import { Link , Switch, Route, useParams} from 'react-router-dom'
 import Styled from 'styled-components'
@@ -61,6 +61,19 @@ const App = () => {
     e.preventDefault();
   }
 
+  const [initialValues, setInitialValues] = useState({
+                                              nameinput: '',
+                                              address: '',
+                                              email: '',
+                                              pizzaStyle: '',
+                                              pizzaSize: '',
+                                              toppings: '',
+                                              sides: '',
+                                              drinks: '',
+                                              yerp: '',
+                                              specialInstructions: ''
+                                            });
+
   return (
     <StyledApp>
       <header>
@@ -80,7 +93,7 @@ const App = () => {
           <Home />
         </Route> 
         <Route path='/pizza'>
-          <Form submit={submit}/>
+          <Form submit={submit} initialValues={initialValues}/>
         </Route>
         <Route path='/confirmation'>
           <Confirmation />
