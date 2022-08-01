@@ -54,7 +54,7 @@ export default function(props) {
         const { name, value, checked, type } = e.target;
         const checkedValue = type === 'checkbox' ? checked : value;
         change(name, checkedValue);
-        console.log(e.target);
+        console.log(e.target.name, e.target.value);
     }
 
 

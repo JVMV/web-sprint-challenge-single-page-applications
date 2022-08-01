@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import { Link , Switch, Route, useParams} from 'react-router-dom'
 import Styled from 'styled-components'
 import Home from './homepage';
 import Form from './Form';
 import Confirmation from './Confirmation';
+import axios from 'axios';
 
 const StyledApp = Styled.div`
   display: flex;
@@ -74,15 +75,26 @@ const initialValues = {
   beer: '',
   wine: '',
   yerp: '',
-  specialInstructions: ''
+  specialInstructions: '',
 };
+
 
 const App = () => {
   const [formValues, setFormValues] = useState(initialValues);
+  const [openOrders, setOpenOrders] = useState(initialValues);
 
   const submit = (e) => {
     e.preventDefault();
     formSubmit();
+  }
+
+
+  const postOrder = (order) => {
+    axios.post('https://reqres.in/api/orders', order)
+      .then(res => {
+        setOpenOrders(res.data);
+      })
+      .catch(err => console.log(err))
   }
 
   const formSubmit = () => {
@@ -99,7 +111,8 @@ const App = () => {
       Instructions: formValues.specialInstructions
       
     }
-    console.log(orderInfo);
+    postOrder(orderInfo);
+    setFormValues(initialValues);
   }
 
   const change = (name, value) => {
@@ -130,7 +143,7 @@ const App = () => {
           <Form submit={submit} formValues={formValues} change={change}/>
         </Route>
         <Route path='/confirmation'>
-          <Confirmation />
+          <Confirmation openOrders={openOrders}/>
         </Route>
        </Switch> 
       </div>
