@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styled from'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -47,10 +47,14 @@ align-items: center;
 
 export default function(props) {
 
-    const {submit, initialValues} = props;
-    const {nameinput, address, email, pizzaStyle, pizzaSize, toppings, sides, drinks, yerp} = initialValues;
+    const {submit, formValues, change} = props;
+    const {nameinput, address, email, pizzaStyle, pizzaSize, pepperoni, sausage, mushrooms, cheese, cheesyMac, salad, breadsticks, pasta, brisk, horchata, beer, wine , yerp} = formValues;
+    
     const onChange = e => {
-        return console.log(e.target);
+        const { name, value, checked, type } = e.target;
+        const checkedValue = type === 'checkbox' ? checked : value;
+        change(name, checkedValue);
+        console.log(e.target);
     }
 
 
@@ -71,6 +75,7 @@ export default function(props) {
                             type='text'
                             placeholder='enter full name'
                             value={nameinput}
+                            onChange={onChange}
                         />
                     </label>
                     <br />
@@ -80,6 +85,7 @@ export default function(props) {
                             type='text'
                             placeholder='enter address'
                             value={address}
+                            onChange={onChange}
                         />
                     </label>
                     <br />
@@ -89,6 +95,7 @@ export default function(props) {
                             type='email'
                             placeholder='enter email'
                             value={email}
+                            onChange={onChange}
                         />
                     </label>
                 </fieldset>
@@ -98,7 +105,7 @@ export default function(props) {
                     <fieldset>
                         <legend>Pizza</legend>
                         <label>Select Pizza:<br />
-                        <select name='pizzaStyle' value={pizzaStyle}>
+                        <select name='pizzaStyle' value={pizzaStyle} onChange={onChange}>
                             <option value=''>--select style--</option>
                             <option value='artisan'>ArtisanThin Crust</option>
                             <option value='deepdish'>Deep Dish</option>
@@ -106,11 +113,11 @@ export default function(props) {
                         </select>
                             <br />
                         <label id='size-selector'>Select Size:<br />
-                            <select name='pizzaSize' value={pizzaSize}>
+                            <select name='pizzaSize' value={pizzaSize} onChange={onChange}>
                                 <option>--select size--</option>
-                                <option value='artisan'>Personal 6"</option>
-                                <option value='deepdish'>Medium 14"</option>
-                                <option value='original'>Large 22"</option>
+                                <option value='personal'>Personal 6"</option>
+                                <option value='medium'>Medium 14"</option>
+                                <option value='large'>Large 22"</option>
                             </select>
                         </label>
                             <br />
@@ -119,19 +126,19 @@ export default function(props) {
                     <fieldset>
                         <legend>Choose Toppings</legend>
                         <label>
-                            <input name='toppings' type='checkbox' value='pepperoni' checked={toppings}/>
+                            <input name='pepperoni' type='checkbox' value='pepperoni' checked={pepperoni} onChange={onChange}/>
                             Pepperoni
                         </label>
                         <label>
-                            <input name='toppings' type='checkbox' value='sausage' checked={toppings}/>
+                            <input name='sausage' type='checkbox' value='sausage' checked={sausage} onChange={onChange}/>
                             Sausage
                         </label>
                         <label>
-                            <input name='toppings' type='checkbox' value='mushrooms' checked={toppings}/>
+                            <input name='mushrooms' type='checkbox' value='mushrooms' checked={mushrooms} onChange={onChange}/>
                             Mushrooms
                         </label>
                         <label>
-                            <input name='toppings' type='checkbox' value='cheese' checked={toppings}/>
+                            <input name='cheese' type='checkbox' value='cheese' checked={cheese} onChange={onChange}/>
                             Cheeese
                         </label>
                     </fieldset>
@@ -140,44 +147,44 @@ export default function(props) {
                         <fieldset>
                         <legend>Sides</legend>
                         <label>
-                            <input name='sides' type='checkbox' value='cheesy-mac' checked={sides}/>
+                            <input name='cheesyMac' type='checkbox' value='cheesyMac' checked={cheesyMac} onChange={onChange}/>
                             Cheesy Mac
                         </label>
                         <label>
-                            <input name='sides' type='checkbox' value='salad' checked={sides}/>
+                            <input name='salad' type='checkbox' value='salad' checked={salad} onChange={onChange}/>
                             Salad
                         </label>
                         <label>
-                            <input name='sides' type='checkbox' value='breadsticks' checked={sides}/>
+                            <input name='breadsticks' type='checkbox' value='breadsticks' checked={breadsticks} onChange={onChange}/>
                             Breadsticks
                         </label>
                         <label>
-                            <input name='sides' type='checkbox' value='pasta' checked={sides}/>
+                            <input name='pasta' type='checkbox' value='pasta' checked={pasta} onChange={onChange}/>
                             Pasta
                         </label>
                     </fieldset>
                     <fieldset>
                         <legend>Drinks</legend>
                         <label>
-                            <input name='drinks' type='checkbox' value='brisk' checked={drinks}/>
+                            <input name='brisk' type='checkbox' value='brisk' checked={brisk} onChange={onChange}/>
                             Brisk
                         </label>
                         <label>
-                            <input name='drinks' type='checkbox' value='horchata' checked={drinks}/>
+                            <input name='horchata' type='checkbox' value='horchata' checked={horchata} onChange={onChange}/>
                             Horchata
                         </label>
                         <label>
-                            <input name='drinks' type='checkbox' value='beer' checked={drinks}/>
+                            <input name='beer' type='checkbox' value='beer' checked={beer} onChange={onChange}/>
                             Draft Beer
                         </label>
                         <label>
-                            <input name='drinks' type='checkbox' value='wine' checked={drinks}/>
+                            <input name='wine' type='checkbox' value='wine' checked={wine} onChange={onChange}/>
                             Wine
                         </label>
                     </fieldset>
                             <br />
                         <label>Yerrrr?!<br />
-                            <select name='yerp' value={yerp}>
+                            <select name='yerp' value={yerp} onChange={onChange}>
                                 <option value=''>--select one--</option>
                                 <option value='yerp'>YERRRRR!!!</option>
                                 <option value='nah'>Nah...</option>
@@ -186,10 +193,10 @@ export default function(props) {
                     </fieldset>
                     <fieldset>
                         <legend>Special Instructions</legend>
-                        <input id='special-text' name='specialInstructions' placeholder='extra sauce, extra napkins, no pickles, etc.'/>
+                        <input id='special-text' name='specialInstructions' onChange={onChange} placeholder='extra sauce, extra napkins, no pickles, etc.'/>
                     </fieldset>
                 </fieldset>
-                <Link to='/confirmation' id='order-button' className='order-btn' onClick={true ? null : {submit}}>
+                <Link to='/confirmation' id='order-button' className='order-btn' onClick={submit}>
                     Submit Order
                 </Link>
             </form>

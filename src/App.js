@@ -55,24 +55,58 @@ const StyledApp = Styled.div`
   }
 `
 
+const initialValues = {
+  nameinput: '',
+  address: '',
+  email: '',
+  pizzaStyle: '',
+  pizzaSize: '',
+  pepperoni: '',
+  sausage: '',
+  mushrooms: '',
+  cheese: '',
+  cheesyMac: '',
+  salad: '',
+  breadsticks: '',
+  pasta: '',
+  brisk: '',
+  horchata: '',
+  beer: '',
+  wine: '',
+  yerp: '',
+  specialInstructions: ''
+};
+
 const App = () => {
+  const [formValues, setFormValues] = useState(initialValues);
 
   const submit = (e) => {
     e.preventDefault();
+    formSubmit();
   }
 
-  const [initialValues, setInitialValues] = useState({
-                                              nameinput: '',
-                                              address: '',
-                                              email: '',
-                                              pizzaStyle: '',
-                                              pizzaSize: '',
-                                              toppings: '',
-                                              sides: '',
-                                              drinks: '',
-                                              yerp: '',
-                                              specialInstructions: ''
-                                            });
+  const formSubmit = () => {
+    const orderInfo = {
+      Name: formValues.nameinput,
+      Address: formValues.address,
+      Email: formValues.email,
+      PieType: formValues.pizzaStyle,
+      Size: formValues.pizzaSize,
+      Toppings: `Pepperoni: ${formValues.pepperoni}, Sausage: ${formValues.sausage}, Mushrooms: ${formValues.mushrooms}, Cheese: ${formValues.cheese}`,
+      Sides: `CheesyMac: ${formValues.cheesyMac}, Salad: ${formValues.salad}, Breadsticks: ${formValues.breadsticks}, Pasta: ${formValues.pasta}`,
+      Drinks: `Brisk: ${formValues.brisk}, Horchata: ${formValues.horchata}, Beer: ${formValues.beer}, Wine: ${formValues.wine}`,
+      Yerr: formValues.yerp,
+      Instructions: formValues.specialInstructions
+      
+    }
+    console.log(orderInfo);
+  }
+
+  const change = (name, value) => {
+    setFormValues({...formValues, [name]: value});
+  }
+
+
 
   return (
     <StyledApp>
@@ -93,7 +127,7 @@ const App = () => {
           <Home />
         </Route> 
         <Route path='/pizza'>
-          <Form submit={submit} initialValues={initialValues}/>
+          <Form submit={submit} formValues={formValues} change={change}/>
         </Route>
         <Route path='/confirmation'>
           <Confirmation />
