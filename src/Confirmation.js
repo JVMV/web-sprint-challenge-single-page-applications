@@ -1,16 +1,14 @@
 import React from 'react';
 import Styled from 'styled-components';
 
-
-
-
-
-
-
 const StyledConfirmation = Styled.div`
 display: flex;
 flex-flow: row wrap;
 justify-content: center;
+
+.orderDetails {
+    width: 80%;
+}
 
 .iso {
     margin: 5% 0;
@@ -26,15 +24,12 @@ h1, p {
 `
 
 export default function(props) {
+    const {openOrders} = props;
 
-    const { nameinput, address, email, 
-            pizzaStyle, pizzaSize, pepperoni, 
-            sausage, mushrooms, cheese, cheesyMac, 
-            salad, breadsticks, pasta, brisk, horchata, 
-            beer, wine, yerp, specialInstructions} = props
+    const {Address, Drinks, Email, Instructions, Name, PieType, Sides, Size, Toppings, Yerr} = openOrders;
     
     
-    
+    console.log(openOrders);
     
     
 
@@ -46,20 +41,20 @@ export default function(props) {
         <p><em>Did you know that you can recieve 40% off your next order by referring a friend? Click here to learn more</em></p>
         <div className='orderDetails'>
             <div className='customerInfo iso'>
-                Name: {nameinput}<br />
-                Address: {address}<br />
-                Email: {email}<br />
+                Name: {Name}<br />
+                Address: {Address}<br />
+                Email: {Email}<br />
             </div>
             <div className='orderInfo iso'>
-                PieType: {pizzaStyle}<br />
-                Size: {pizzaSize}<br />
-                Toppings: {`Pepperoni: ${pepperoni}, Sausage: ${sausage}, Mushrooms: ${mushrooms}, Cheese: ${cheese}`}<br />
-                Sides: {`CheesyMac: ${cheesyMac}, Salad: ${salad}, Breadsticks: ${breadsticks}, Pasta: ${pasta}`}<br />
-                Drinks: {`Brisk: ${brisk}, Horchata: ${horchata}, Beer: ${beer}, Wine: ${wine}`}<br />
-                Yerr: {yerp}
+                PieType: {PieType}<br />
+                Size: {Size}<br />
+                Toppings: {Toppings}<br />
+                Sides: {Sides}<br />
+                Drinks: {Drinks}<br />
+                Yerr: {Yerr}
             </div>
             <div className='iso'>
-                Instructions: {specialInstructions}
+                Instructions: {Instructions}
             </div>
         </div>
         </StyledConfirmation>

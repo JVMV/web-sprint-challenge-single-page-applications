@@ -84,7 +84,7 @@ const App = () => {
   const [openOrders, setOpenOrders] = useState(initialValues);
 
   const submit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     formSubmit();
   }
 
