@@ -57,7 +57,49 @@ describe('everything works', () => {
     deactBtn().should('exist');
   })
 
+  it('inputs works', () => {
+    cy.visit('http://localhost:3000/pizza');
+    nameinput().type('John Smith');
+    addressInput().type('1234 west street ave');
+    emailInput().type('email@email.com');
+    styleInput().select('artisan');
+    sizeInput().select('large');
+    pepperoni().check();
+    cheese().check();
+    cheesyMac().check();
+    brisk().check();
+    yerp().select('yerp');
+    specIns().type('I want lots of cheese please');
+    submitBtn().should('exist');
+  })
 
+  it('Form submits and displays order information', () => {
+    cy.visit('http://localhost:3000/pizza');
+    nameinput().type('John Smith');
+    addressInput().type('1234 west street ave');
+    emailInput().type('email@email.com');
+    styleInput().select('artisan');
+    sizeInput().select('large');
+    pepperoni().check();
+    cheese().check();
+    cheesyMac().check();
+    brisk().check();
+    yerp().select('yerp');
+    specIns().type('I want lots of cheese please');
+    submitBtn().should('exist').click();
+    cy.url().should('include', '/Confirmation');
+    cy.contains('John Smith').should('exist');
+    cy.contains('1234 west street ave').should('exist');
+    cy.contains('email@email.com').should('exist');
+    cy.contains('artisan').should('exist');
+    cy.contains('large').should('exist');
+    cy.contains('pepperoni').should('exist');
+    cy.contains('cheese').should('exist');
+    cy.contains('cheesyMac').should('exist');
+    cy.contains('brisk').should('exist');
+    cy.contains('yerp').should('exist');
+    cy.contains('I want lots of cheese please').should('exist');
+  })
 
 
 
