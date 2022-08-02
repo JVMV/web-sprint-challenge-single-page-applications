@@ -25,7 +25,7 @@ h1, p {
 
 export default function(props) {
     const {openOrders} = props;
-    const {Address, Drinks, Email, Instructions, Name, PieType, Sides, Size, Toppings, Yerr} = openOrders;
+    const {address, drinks, email, instructions, name, pieType, sides, size, topping, yerr} = openOrders;
     
     return (
         <StyledConfirmation>
@@ -34,20 +34,20 @@ export default function(props) {
         <p><em>Did you know that you can recieve 40% off your next order by referring a friend? Click here to learn more</em></p>
         <div className='orderDetails'>
             <div className='customerInfo iso'>
-                Name: {Name}<br />
-                Address: {Address}<br />
-                Email: {Email}<br />
+                Name: {name}<br />
+                Address: {address}<br />
+                Email: {email}<br />
             </div>
             <div className='orderInfo iso'>
-                PieType: {PieType}<br />
-                Size: {Size}<br />
-                Toppings: {Toppings}<br />
-                Sides: {Sides}<br />
-                Drinks: {Drinks}<br />
-                Yerr: {Yerr}
+                PieType: {pieType}<br />
+                Size: {size}<br />
+                Toppings: {topping}<br />
+                Sides: {sides}<br />
+                Drinks: {drinks}<br />
+                Yerr: {yerr}
             </div>
             <div className='iso'>
-                Instructions: {Instructions}
+                Instructions: {instructions}
             </div>
         </div>
         </StyledConfirmation>

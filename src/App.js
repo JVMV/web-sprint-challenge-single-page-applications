@@ -95,14 +95,14 @@ const App = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [openOrders, setOpenOrders] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(initialErrors);
-  const [validate, setValidate] = useState(null);
+  const [validate, setValidate] = useState('');
  
   const history = useHistory();
 
   useEffect(() => {
     orderSchema.isValid(formValues) 
       .then(valid => {
-        setValidate(valid);
+        setValidate(true);
       })
   }, [formValues])
 
@@ -114,32 +114,34 @@ const App = () => {
   }
 
 
-  const postOrder = (order) => {
-    axios.post('https://reqres.in/api/orders', order)
+  const postOrder = (orderInfo) => {
+    axios.post('https://reqres.in/api/orders', orderInfo)
       .then(res => {
         setOpenOrders(res.data);
+        setFormValues(initialValues);
       })
       .catch(err => console.log(err))
   }
 
   const formSubmit = () => {
     const orderInfo = {
-      Name: formValues.nameinput,
-      Address: formValues.address,
-      Email: formValues.email,
-      PieType: formValues.pizzaStyle,
-      Size: formValues.pizzaSize,
+      name: formValues.nameinput,
+      address: formValues.address,
+      email: formValues.email,
+      pieType: formValues.pizzaStyle,
+      size: formValues.pizzaSize,
       // 
-      Toppings: ['pepperoni', 'sausage', 'mushrooms', 'cheese'].
-      filter(topping => `${!!formValues[topping]}, `),
-      Sides: ['cheesyMac', 'salad', 'breadsticks', 'pasta'].filter(side => `${!!formValues[side]}, `),
-      Drinks: ['brisk', 'horchata', 'beer', 'wine'].filter(drink => `${!!formValues[drink]}, `),
+      topping: ['pepperoni', 'sausage', 'mushrooms', 'cheese'].filter(topping => `${!!formValues[topping]}, `),
+      sides: ['cheesyMac', 'salad', 'breadsticks', 'pasta'].filter(side => `${!!formValues[side]}, `),
+      drinks: ['brisk', 'horchata', 'beer', 'wine'].filter(drink => `${!!formValues[drink]}, `),
       // 
-      Yerr: formValues.yerp,
-      Instructions: formValues.specialInstructions
+      yerr: formValues.yerp,
+      instructions: formValues.specialInstructions
     }
+
+    // postOrder(orderInfo);
+    // setOpenOrders(formValues);
     postOrder(orderInfo);
-    setFormValues(initialValues);
   }
 
   const validation = (name, value) => {

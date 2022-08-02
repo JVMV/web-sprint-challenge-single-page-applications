@@ -81,7 +81,7 @@ export default function(props) {
             <span className='errorMessage'>{errors.email}</span>
             <span className='errorMessage'>{errors.pizzaStyle}</span>
             <span className='errorMessage'>{errors.pizzaSize}</span>
-            <form id='pizza-form' className='form-container' onSubmit={submit}>
+            <form id='pizza-form' className='form-container pizza-form' onSubmit={submit}>
                 <fieldset>
                     <legend>Personal Info</legend>
                     <label>Full Name: <br />
@@ -120,6 +120,16 @@ export default function(props) {
                     <legend>Order</legend>
                     <fieldset>
                         <legend>Pizza</legend>
+                        
+                            <br />
+                        <label>Select Size:<br />
+                            <select id='size-dropdown' name='pizzaSize' value={pizzaSize} onChange={onChange}>
+                                <option value=''>--select size--</option>
+                                <option value='personal'>Small</option>
+                                <option value='medium'>Medium</option>
+                                <option value='large'>Large</option>
+                            </select>
+                        </label>
                         <label>Select Pizza:<br />
                         <select name='pizzaStyle' value={pizzaStyle} onChange={onChange}>
                             <option value=''>--select style--</option>
@@ -127,15 +137,6 @@ export default function(props) {
                             <option value='deepdish'>Deep Dish</option>
                             <option value='original'>Original</option>
                         </select>
-                            <br />
-                        <label id='size-dropdown'>Select Size:<br />
-                            <select name='pizzaSize' value={pizzaSize} onChange={onChange}>
-                                <option>--select size--</option>
-                                <option value='personal'>Personal 6"</option>
-                                <option value='medium'>Medium 14"</option>
-                                <option value='large'>Large 22"</option>
-                            </select>
-                        </label>
                             <br />
                         </label>
                     </fieldset>
