@@ -45,6 +45,14 @@ align-items: center;
     .errorMessage {
         color: red;
     }
+    .btnError{
+        background-color: lightGray;
+        color: gray;
+    }
+    .btnError:hover {
+        color: white;
+        background-color: red;
+    }
 `
 
 
@@ -73,7 +81,7 @@ export default function(props) {
             <span className='errorMessage'>{errors.email}</span>
             <span className='errorMessage'>{errors.pizzaStyle}</span>
             <span className='errorMessage'>{errors.pizzaSize}</span>
-            <form id='pizza-form' className='form-container'>
+            <form id='pizza-form' className='form-container' onSubmit={submit}>
                 <fieldset>
                     <legend>Personal Info</legend>
                     <label>Full Name: <br />
@@ -206,9 +214,10 @@ export default function(props) {
                 </fieldset>
                 {validate 
                 ? 
-                <Link to='/confirmation' id='order-button' className='order-btn' onClick={submit}>Submit Order</Link>
+                // <Link to='/confirmation' id='order-button' className='order-btn' onClick={submit}>Submit Order</Link>
+                <button id='order-button' className='order-btn' >Submit Order</button>
                 :
-                <span className='order-btn'>Submit Order</span>
+                <span className='order-btn btnError'>Submit Order</span>
                 }
             </form>
         </StyledForm>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-import { Link , Switch, Route, useParams} from 'react-router-dom'
+import { Link , Switch, Route, useHistory } from 'react-router-dom'
 import Styled from 'styled-components'
 import Home from './homepage';
 import Form from './Form';
@@ -96,6 +96,8 @@ const App = () => {
   const [openOrders, setOpenOrders] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(initialErrors);
   const [validate, setValidate] = useState(null);
+ 
+  const history = useHistory();
 
   useEffect(() => {
     orderSchema.isValid(formValues) 
@@ -106,8 +108,9 @@ const App = () => {
 
 
   const submit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     formSubmit();
+    history.push('/Confirmation');
   }
 
 
@@ -134,10 +137,6 @@ const App = () => {
       // 
       Yerr: formValues.yerp,
       Instructions: formValues.specialInstructions
-      // OLD
-      // Toppings: `Pepperoni: ${formValues.pepperoni}, Sausage: ${formValues.sausage}, Mushrooms: ${formValues.mushrooms}, Cheese: ${formValues.cheese}`,
-      // Sides: `CheesyMac: ${formValues.cheesyMac}, Salad: ${formValues.salad}, Breadsticks: ${formValues.breadsticks}, Pasta: ${formValues.pasta}`,
-      // Drinks: `Brisk: ${formValues.brisk}, Horchata: ${formValues.horchata}, Beer: ${formValues.beer}, Wine: ${formValues.wine}`,
     }
     postOrder(orderInfo);
     setFormValues(initialValues);
