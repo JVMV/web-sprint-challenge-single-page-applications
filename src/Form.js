@@ -217,7 +217,7 @@ export default function(props) {
                 // <Link to='/confirmation' id='order-button' className='order-btn' onClick={submit}>Submit Order</Link>
                 <button id='order-button' className='order-btn' >Submit Order</button>
                 :
-                <span className='order-btn btnError'>Submit Order</span>
+                <span name='deactBtn' className='order-btn btnError'>Submit Order</span>
                 }
             </form>
         </StyledForm>
