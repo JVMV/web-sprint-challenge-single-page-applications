@@ -42,12 +42,15 @@ align-items: center;
     #special-text {
         width: 100%;
     }
+    .errorMessage {
+        color: red;
+    }
 `
 
 
 export default function(props) {
 
-    const {submit, formValues, change} = props;
+    const {submit, formValues, change, errors, validate} = props;
     const {nameinput, address, email, pizzaStyle, pizzaSize, pepperoni, sausage, mushrooms, cheese, cheesyMac, salad, breadsticks, pasta, brisk, horchata, beer, wine , yerp} = formValues;
     
     const onChange = e => {
@@ -65,10 +68,15 @@ export default function(props) {
     return (
         <StyledForm>
             <h2>Your Order</h2>
+            <span className='errorMessage'>{errors.nameinput}</span>
+            <span className='errorMessage'>{errors.address}</span>
+            <span className='errorMessage'>{errors.email}</span>
+            <span className='errorMessage'>{errors.pizzaStyle}</span>
+            <span className='errorMessage'>{errors.pizzaSize}</span>
             <form id='pizza-form' className='form-container'>
                 <fieldset>
                     <legend>Personal Info</legend>
-                    <label>Full Name:<br />
+                    <label>Full Name: <br />
                         <input 
                             id='name-input'
                             name='nameinput'
@@ -112,7 +120,7 @@ export default function(props) {
                             <option value='original'>Original</option>
                         </select>
                             <br />
-                        <label id='size-selector'>Select Size:<br />
+                        <label id='size-dropdown'>Select Size:<br />
                             <select name='pizzaSize' value={pizzaSize} onChange={onChange}>
                                 <option>--select size--</option>
                                 <option value='personal'>Personal 6"</option>
@@ -196,9 +204,12 @@ export default function(props) {
                         <input id='special-text' name='specialInstructions' onChange={onChange} placeholder='extra sauce, extra napkins, no pickles, etc.'/>
                     </fieldset>
                 </fieldset>
-                <Link to='/confirmation' id='order-button' className='order-btn' onClick={submit}>
-                    Submit Order
-                </Link>
+                {validate 
+                ? 
+                <Link to='/confirmation' id='order-button' className='order-btn' onClick={submit}>Submit Order</Link>
+                :
+                <span className='order-btn'>Submit Order</span>
+                }
             </form>
         </StyledForm>
     )

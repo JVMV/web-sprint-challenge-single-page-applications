@@ -6,6 +6,8 @@ import Home from './homepage';
 import Form from './Form';
 import Confirmation from './Confirmation';
 import axios from 'axios';
+import orderSchema from './orderSchema';
+import * as yup from 'yup';
 
 const StyledApp = Styled.div`
   display: flex;
@@ -62,26 +64,46 @@ const initialValues = {
   email: '',
   pizzaStyle: '',
   pizzaSize: '',
-  pepperoni: '',
-  sausage: '',
-  mushrooms: '',
-  cheese: '',
-  cheesyMac: '',
-  salad: '',
-  breadsticks: '',
-  pasta: '',
-  brisk: '',
-  horchata: '',
-  beer: '',
-  wine: '',
+  pepperoni: false,
+  sausage: false,
+  mushrooms: false,
+  cheese: false,
+  cheesyMac: false,
+  salad: false,
+  breadsticks: false,
+  pasta: false,
+  brisk: false,
+  horchata: false,
+  beer: false,
+  wine: false,
   yerp: '',
   specialInstructions: '',
 };
+
+const initialErrors = {
+  nameinput: '',
+  address: '',
+  email: '',
+  pizzaStyle: '',
+  pizzaSize: '',
+  yerp: '',
+  specialInstructions: '',
+}
 
 
 const App = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [openOrders, setOpenOrders] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState(initialErrors);
+  const [validate, setValidate] = useState(null);
+
+  useEffect(() => {
+    orderSchema.isValid(formValues) 
+      .then(valid => {
+        setValidate(valid);
+      })
+  }, [formValues])
+
 
   const submit = (e) => {
     // e.preventDefault();
@@ -104,22 +126,33 @@ const App = () => {
       Email: formValues.email,
       PieType: formValues.pizzaStyle,
       Size: formValues.pizzaSize,
-      Toppings: `Pepperoni: ${formValues.pepperoni}, Sausage: ${formValues.sausage}, Mushrooms: ${formValues.mushrooms}, Cheese: ${formValues.cheese}`,
-      Sides: `CheesyMac: ${formValues.cheesyMac}, Salad: ${formValues.salad}, Breadsticks: ${formValues.breadsticks}, Pasta: ${formValues.pasta}`,
-      Drinks: `Brisk: ${formValues.brisk}, Horchata: ${formValues.horchata}, Beer: ${formValues.beer}, Wine: ${formValues.wine}`,
+      // 
+      Toppings: ['pepperoni', 'sausage', 'mushrooms', 'cheese'].
+      filter(topping => `${!!formValues[topping]}, `),
+      Sides: ['cheesyMac', 'salad', 'breadsticks', 'pasta'].filter(side => `${!!formValues[side]}, `),
+      Drinks: ['brisk', 'horchata', 'beer', 'wine'].filter(drink => `${!!formValues[drink]}, `),
+      // 
       Yerr: formValues.yerp,
       Instructions: formValues.specialInstructions
-      
+      // OLD
+      // Toppings: `Pepperoni: ${formValues.pepperoni}, Sausage: ${formValues.sausage}, Mushrooms: ${formValues.mushrooms}, Cheese: ${formValues.cheese}`,
+      // Sides: `CheesyMac: ${formValues.cheesyMac}, Salad: ${formValues.salad}, Breadsticks: ${formValues.breadsticks}, Pasta: ${formValues.pasta}`,
+      // Drinks: `Brisk: ${formValues.brisk}, Horchata: ${formValues.horchata}, Beer: ${formValues.beer}, Wine: ${formValues.wine}`,
     }
     postOrder(orderInfo);
     setFormValues(initialValues);
   }
 
-  const change = (name, value) => {
-    setFormValues({...formValues, [name]: value});
+  const validation = (name, value) => {
+    yup.reach(orderSchema, name).validate(value)
+      .then(() => setFormErrors({...formErrors, [name]: ''}))
+      .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
   }
 
-
+  const change = (name, value) => {
+    validation(name, value);
+    setFormValues({...formValues, [name]: value});
+  }
 
   return (
     <StyledApp>
@@ -140,7 +173,7 @@ const App = () => {
           <Home />
         </Route> 
         <Route path='/pizza'>
-          <Form submit={submit} formValues={formValues} change={change}/>
+          <Form submit={submit} formValues={formValues} change={change} errors={formErrors} validate={validate}/>
         </Route>
         <Route path='/confirmation'>
           <Confirmation openOrders={openOrders}/>
@@ -153,7 +186,7 @@ const App = () => {
         <Link className="link home" to='/'>Home</Link>
         <Link className="link order" to='/order-pizza'>Order</Link>
       </nav> */}
-      <p>Copyright © 2022 JsPizzaKitchen, LLC. All Rights Reserved</p>
+      <p>Copyright © 2022 JSPizzaKitchen, LLC. All Rights Reserved</p>
       </footer>
     </StyledApp>
   );

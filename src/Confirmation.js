@@ -25,15 +25,8 @@ h1, p {
 
 export default function(props) {
     const {openOrders} = props;
-
     const {Address, Drinks, Email, Instructions, Name, PieType, Sides, Size, Toppings, Yerr} = openOrders;
     
-    
-    console.log(openOrders);
-    
-    
-
-
     return (
         <StyledConfirmation>
         <h1>We've got your order!</h1>
