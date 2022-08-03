@@ -27,6 +27,10 @@ export default function(props) {
     const {openOrders} = props;
     const {address, drinks, email, instructions, name, pieType, sides, size, topping, yerr} = openOrders;
     
+    const toppingList = () => topping.join(', ');
+    const sidesList = () => sides.join(', ');
+    const drinksList = () => drinks.join(', ');
+
     return (
         <StyledConfirmation>
         <h1>We've got your order!</h1>
@@ -39,11 +43,11 @@ export default function(props) {
                 Email: {email}<br />
             </div>
             <div className='orderInfo iso'>
-                PieType: {pieType}<br />
+                Pizza: {pieType}<br />
                 Size: {size}<br />
-                Toppings: {topping}<br />
-                Sides: {sides}<br />
-                Drinks: {drinks}<br />
+                Toppings: {toppingList()}<br />
+                Sides: {sidesList()}<br />
+                Drinks: {drinksList()}<br />
                 Yerr: {yerr}
             </div>
             <div className='iso'>

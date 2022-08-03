@@ -120,8 +120,6 @@ export default function(props) {
                     <legend>Order</legend>
                     <fieldset>
                         <legend>Pizza</legend>
-                        
-                            <br />
                         <label>Select Size:<br />
                             <select id='size-dropdown' name='pizzaSize' value={pizzaSize} onChange={onChange}>
                                 <option value=''>--select size--</option>
@@ -129,7 +127,7 @@ export default function(props) {
                                 <option value='medium'>Medium</option>
                                 <option value='large'>Large</option>
                             </select>
-                        </label>
+                        </label><br />
                         <label>Select Pizza:<br />
                         <select name='pizzaStyle' value={pizzaStyle} onChange={onChange}>
                             <option value=''>--select style--</option>
