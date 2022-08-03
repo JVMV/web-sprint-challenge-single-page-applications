@@ -16,7 +16,7 @@ const StyledApp = Styled.div`
   // border: solid 1px red;
   height: 100vh;
   margin: 1%;
-  // width: 100vw;
+  // width: 700px;
 
   header {
     display: flex;
